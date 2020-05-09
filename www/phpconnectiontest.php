@@ -1,12 +1,15 @@
 <?php
-$serverName = "localhost";
-$connectionInfo = array( "Database"=>"test", "UID"=>"sa", "PWD"=>"Your_password123");
-$conn = sqlsrv_connect( $serverName, $connectionInfo);
+$servername = "localhost";
+$username = "root";
+$password = "test";
+$dsn = 'mysql:dbname=test;host=db';
 
-if( $conn ) {
-     echo "Connection established.<br />";
-}else{
-     echo "Connection could not be established.<br />";
-     die( print_r( sqlsrv_errors(), true));
+try {
+  $conn = new PDO($dsn, $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
 }
 ?>
