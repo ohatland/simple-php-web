@@ -10,4 +10,17 @@ services:
         volumes: 
             - ./ms_sql/data/:/var/opt/mssql/data/
             - ./ms_sql/log/:/var/opt/mssql/log/
+        networks: 
+            - default
+    apache:
+        build:
+            context: .
+            dockerfile: ./Dockerfile.apache
+        ports:
+            - 80:80
+        volumes: 
+            - ./www:/var/www/html/
+            - ./logs:/var/log/apache2/
+        networks: 
+            - default
         
