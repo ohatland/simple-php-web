@@ -1,2 +1,5 @@
 ms_sql/
 temp/
+logs/access.log
+logs/error.log
+logs/other_vhosts_access.log
