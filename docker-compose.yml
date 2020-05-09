@@ -1,15 +1,17 @@
 version: "3"
 services: 
-    ms_sql:
-        image: mcr.microsoft.com/mssql/server:2019-latest
+    db:
+        image: mariadb
         ports: 
-            - 1433:1433
-        environment: 
-            SA_PASSWORD: "Your_password123"
-            ACCEPT_EULA: "Y"
+            - 3306:3306
+        environment:  
+            MYSQL_DATABASE: fileStorage
+            MYSQL_USER: user
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: test
         volumes: 
-            - ./ms_sql/data/:/var/opt/mssql/data/
-            - ./ms_sql/log/:/var/opt/mssql/log/
+            - ./dbInit:/docker-entrypoint-initdb.d
+            - ./mysql:/var/lib/mysql
         networks: 
             - default
     apache:
