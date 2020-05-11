@@ -1,10 +1,10 @@
 <?php
 $databaseDockername = "db";
-$username = "root";
-$password = "test";
-$dbname = "fileStorage";
+$username = "testUser";
+$password = "testPassword";
+$dbname = "testDB";
 
-// this example uses table new_table with colloms id and name
+// this example uses table testTable with colloms id and name
 
 // PDO statements https://www.php.net/manual/en/class.pdostatement.php
 
@@ -13,13 +13,13 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully <br>";
     
-    $stmt = $conn->prepare("SELECT * FROM new_table");
+    $stmt = $conn->prepare("SELECT * FROM testTable");
     $stmt->execute();
 
     // set the resulting array to numeric 
     $result = $stmt->setFetchMode(PDO::FETCH_NUM);
     
-    // for table new_table with colloms id and name
+    // for table testTable with colloms id and name
     while ($row = $stmt->fetch()) {
         print $row[0] . " - " . $row[1] . "<br>";
     }
@@ -29,7 +29,7 @@ try {
     // set the resulting array to associative 
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     
-    // for table new_table with colloms id and name
+    // for table testTable with colloms id and name
     while ($row = $stmt->fetch()) {
         print $row['id'] . "\t" . $row['name'] . "\n";
     }
