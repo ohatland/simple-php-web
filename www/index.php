@@ -1,7 +1,6 @@
 <?php
-    
     include './classes/db.php';
-    
+
     $testObj = new DB();
     $testObj->getUsers();
 ?>
