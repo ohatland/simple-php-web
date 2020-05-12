@@ -1,4 +1,16 @@
 <?php
+    
+    include './classes/db.php';
+    
+
+    $testObj = new DB();
+    $testObj->getUsers();
+
+?>
+
+
+<?php
+/*
 $databaseDockername = "db";
 $username = "testUser";
 $password = "testPassword";
@@ -24,20 +36,21 @@ try {
         print $row[0] . " - " . $row[1] . "<br>";
     }
 
-    /* Alternative
+    // Alternative
     
     // set the resulting array to associative 
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    // $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     
     // for table testTable with colloms id and name
-    while ($row = $stmt->fetch()) {
-        print $row['id'] . "\t" . $row['name'] . "\n";
-    }
-    */
+    // while ($row = $stmt->fetch()) {
+    //     print $row['id'] . "\t" . $row['name'] . "\n";
+    // }
+    
 
 
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 $conn = null;
+*/
 ?>
