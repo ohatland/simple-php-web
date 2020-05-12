@@ -2,6 +2,7 @@
     include './classes/db.php';
 
     $testObj = new DB();
+    $testObj->setUsers("Erlend");
     $testObj->getUsers();
 ?>
 
