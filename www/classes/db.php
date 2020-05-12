@@ -5,7 +5,7 @@ class DB
     private $host = "db";  // When using docker-compose this needs to be the service name of the db in the docker-compose yml
     private $user = "root";
     private $pwd = "test";
-    private $dbName = "test";
+    private $dbName = "testDB";
 
     protected function connect() 
     {
@@ -14,14 +14,24 @@ class DB
         return $pdo;
     }
 
+    // Temp test function
     public function getUsers()
     {
-        $sql = "SELECT * FROM test";
-        $stmt = $this->connect()->query($sql);
+        $sql = "SELECT * FROM testTable";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
         while($row = $stmt->fetch())
         {
-            echo $row['test'] . '<br>';
+            echo $row['name'] . '<br>';
         }
+    }
+    
+    // Temp test function
+    public function setUsers($name)
+    {
+        $sql = "INSERT INTO testTable(name) VALUES(?)";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$name]);
     }
 }
 ?>
