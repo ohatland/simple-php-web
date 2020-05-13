@@ -1,5 +1,4 @@
 from php:7.3-apache
-RUN apt install php-mysql
 
 RUN apt-get update && apt-get install -y apt-utils libpng-dev libjpeg-dev libpq-dev unzip git \
   && rm -rf /var/lib/apt/lists/* \
