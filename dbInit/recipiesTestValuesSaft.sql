@@ -43,7 +43,7 @@ VALUES
     '2001-04-03 10:10:10'
 ),
 (
-    '1',
+    '2',
     '2',
     'Sukker',
     '1 kg',
@@ -54,7 +54,7 @@ VALUES
     '2001-04-03 10:10:10'
 ),
 (
-    '1',
+    '2',
     '3',
     'Vann',
     '3 Liter',
@@ -78,7 +78,7 @@ INSERT INTO `steps`
 )
 VALUES
 (
-    '1',
+    '2',
     '4',
     'Knus bringebær i en stor bolle',
     '1',
@@ -88,7 +88,7 @@ VALUES
     '2001-04-03 10:10:10'
 ),
 (
-    '1',
+    '2',
     '5',
     'Tilsett vann og sukker og rør rundt',
     '1',
@@ -111,7 +111,7 @@ INSERT INTO `recipieText`
 )
 VALUES
 (
-    '1',
+    '2',
     '6',
     'Akuratt som hjemme',
     '1',
@@ -135,7 +135,7 @@ INSERT INTO `image`
 )
 VALUES
 (
-    '1',
+    '2',
     '7',
     'c:/malware/',
     'saft.exe',
