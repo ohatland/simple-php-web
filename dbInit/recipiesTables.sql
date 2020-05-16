@@ -4,7 +4,7 @@ USE recipies;
 CREATE TABLE `recipie` 
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(150) NOT NULL,
+    `recipieName` VARCHAR(150) NOT NULL,
     `owner` INT NOT NULL,
     `createdBy` INT NOT NULL,
     `created` DATETIME NOT NULL,
@@ -31,12 +31,12 @@ CREATE TABLE `ingredient`
         ON DELETE CASCADE
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `steps`
+CREATE TABLE `step`
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
     `recipieID` INT NOT NULL,
     `sequence` INT NOT NULL,
-    `stepsText` VARCHAR(4000) NOT NULL,
+    `stepText` VARCHAR(4000) NOT NULL,
     `owner` INT NOT NULL,
     `createdBy` INT NOT NULL,
     `created` DATETIME NOT NULL,
@@ -70,8 +70,8 @@ CREATE TABLE `image`
     `ID` INT NOT NULL AUTO_INCREMENT,
     `recipieID` INT NOT NULL,
     `sequence` int NOT NULL,
-    `path` VARCHAR(200) NOT NULL,
-    `title` VARCHAR(150) NOT NULL,
+    `imagePath` VARCHAR(200) NOT NULL,
+    `imageTitle` VARCHAR(150) NOT NULL,
     `owner` INT NOT NULL,
     `createdBy` INT NOT NULL,
     `created` DATETIME NOT NULL,
@@ -81,4 +81,21 @@ CREATE TABLE `image`
     FOREIGN KEY (recipieID) 
         REFERENCES recipie(ID)
         ON DELETE CASCADE
+)   ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `sequence` 
+(
+	`ID` INT NOT NULL auto_increment,
+    `recipieID` INT NOT NULL,
+    `sequenceNumber` INT NOT NULL,
+    `fromTable` VARCHAR (150) NOT NULL,
+    `owner` INT NOT NULL,
+    `createdBy` INT NOT NULL,
+    `created` DATETIME NOT NULL,
+    `alteredBy` INT NOT NULL,
+    `altered` DATETIME NOT NULL,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (recipieID) 
+        REFERENCES recipie(ID)
+        ON DELETE CASCADE    
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
