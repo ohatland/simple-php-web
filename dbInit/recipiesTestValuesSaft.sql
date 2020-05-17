@@ -1,7 +1,7 @@
 USE recipies;
 INSERT INTO `recipie`
 (
-    `name`, 
+    `recipieName`, 
     `owner`, 
     `createdBy`, 
     `created`, 
@@ -18,10 +18,85 @@ VALUES
     '2001-04-03 10:10:10'
 );
 
+INSERT INTO `recipieSequence`
+(
+    `recipieID`, 
+    `recipieSequenceNumber`,
+    `owner`, 
+    `createdBy`, 
+    `created`, 
+    `alteredBy`, 
+    `altered`
+)
+VALUES
+(
+    '2',
+    '1',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '2',
+    '2',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '2',
+    '3',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '2',
+    '4',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '2',
+    '5',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '2',
+    '6',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '2',
+    '7',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+);
+
 INSERT INTO `ingredient`
 (
     `recipieID`, 
-    `sequence`, 
+    `recipieSequenceID`,
     `ingredientName`, 
     `ammount`, 
     `owner`, 
@@ -32,7 +107,7 @@ INSERT INTO `ingredient`
 )
 VALUES
 (
-    '1',
+    '2',
     '1',
     'Bringebær',
     '1 kg',
@@ -65,11 +140,11 @@ VALUES
     '2001-04-03 10:10:10'
 );
 
-INSERT INTO `steps`
+INSERT INTO `step`
 (
     `recipieID`, 
-    `sequence`, 
-    `stepsText`,
+    `recipieSequenceID`,
+    `stepText`,
     `owner`, 
     `createdBy`, 
     `created`, 
@@ -101,7 +176,7 @@ VALUES
 INSERT INTO `recipieText`
 (
     `recipieID`, 
-    `sequence`, 
+    `recipieSequenceID`,
     `recipieText`,
     `owner`, 
     `createdBy`, 
@@ -123,10 +198,10 @@ VALUES
 
 INSERT INTO `image`
 (
-    `recipieID`, 
-    `sequence`, 
-    `path`,
-    `title`,
+    `recipieID`,
+    `recipieSequenceID`, 
+    `imagePath`,
+    `imageTitle`,
     `owner`, 
     `createdBy`, 
     `created`, 
@@ -137,11 +212,12 @@ VALUES
 (
     '2',
     '7',
-    'c:/malware/',
-    'saft.exe',
+    'c:/malware/saft.exe',
+    'Saft',
     '1',
     '1', 
     '2001-04-03 10:10:10',
     '1', 
     '2001-04-03 10:10:10'
 );
+
