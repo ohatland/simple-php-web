@@ -1,7 +1,7 @@
 USE recipies;
 INSERT INTO `recipie`
 (
-    `name`, 
+    `recipieName`, 
     `owner`, 
     `createdBy`, 
     `created`, 
@@ -18,10 +18,85 @@ VALUES
     '2001-04-03 10:10:10'
 );
 
-INSERT INTO `ingredient`
+INSERT INTO `recipieSequence`
 (
     `recipieID`, 
-    `sequence`, 
+    `recipieSequenceNumber`,
+    `owner`, 
+    `createdBy`, 
+    `created`, 
+    `alteredBy`, 
+    `altered`
+)
+VALUES
+(
+    '1',
+    '1',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '1',
+    '2',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '1',
+    '3',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '1',
+    '4',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '1',
+    '5',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '1',
+    '6',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+),
+(
+    '1',
+    '7',
+    '1',
+    '1', 
+    '2001-04-03 10:10:10',
+    '1', 
+    '2001-04-03 10:10:10'
+);
+
+INSERT INTO `ingredient`
+(
+    `recipieID`,
+    `recipieSequenceID`,
     `ingredientName`, 
     `ammount`, 
     `owner`, 
@@ -65,11 +140,11 @@ VALUES
     '2001-04-03 10:10:10'
 );
 
-INSERT INTO `steps`
+INSERT INTO `step`
 (
-    `recipieID`, 
-    `sequence`, 
-    `stepsText`,
+    `recipieID`,
+    `recipieSequenceID`, 
+    `stepText`,
     `owner`, 
     `createdBy`, 
     `created`, 
@@ -100,8 +175,8 @@ VALUES
 
 INSERT INTO `recipieText`
 (
-    `recipieID`, 
-    `sequence`, 
+    `recipieID`,
+    `recipieSequenceID`, 
     `recipieText`,
     `owner`, 
     `createdBy`, 
@@ -123,10 +198,10 @@ VALUES
 
 INSERT INTO `image`
 (
-    `recipieID`, 
-    `sequence`, 
-    `path`,
-    `title`,
+    `recipieID`,
+    `recipieSequenceID`,
+    `imagePath`,
+    `imageTitle`,
     `owner`, 
     `createdBy`, 
     `created`, 
@@ -137,8 +212,8 @@ VALUES
 (
     '1',
     '7',
-    'c:/malware/',
-    'fruktsalat.exe',
+    'c:/malware/fruktsalat.exe',
+    'Fruktsalat',
     '1',
     '1', 
     '2001-04-03 10:10:10',
