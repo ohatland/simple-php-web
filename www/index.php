@@ -2,8 +2,8 @@
     include './classes/recipiesDB.php';
     $recipiesDB = new recipiesDB();
     
-    require_once '/var/www/vendor/autoload.php';
-    $loader = new \Twig\Loader\FilesystemLoader(['/var/www/html/layoutTemplates', '/var/www/html/recipieTemplates']);
+    require_once '../vendor/autoload.php';
+    $loader = new \Twig\Loader\FilesystemLoader(['./layoutTemplates', './recipieTemplates']);
     $twig = new \Twig\Environment($loader);
 
     
