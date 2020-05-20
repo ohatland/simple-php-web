@@ -108,7 +108,7 @@ CALL sp_InsertStep(@recipieID,5,1, "Steg 1");
 CALL sp_InsertStep(@recipieID,6,1, "Steg 2");
 CALL sp_InsertStep(@recipieID,7,1, "Steg 3");
 CALL sp_InsertRecipieText(@recipieID,8,1, "Beskrivelse av oppskrift");
-CALL sp_InsertImage(@recipieID,9,1, "C:/windows/malware.exe", "Malware");
+CALL sp_InsertImage(@recipieID,9,1, "./img/saft.png", "Deilig saft bilde");
 
 CALL sp_InsertRecipie("Kake", 1, @recipieID);
 CALL sp_InsertIngredient(@recipieID, 1, 1, "Mel", "300 gram");
@@ -119,7 +119,7 @@ CALL sp_InsertStep(@recipieID,5,1, "Steg 1");
 CALL sp_InsertStep(@recipieID,6,1, "Steg 2");
 CALL sp_InsertStep(@recipieID,7,1, "Steg 3");
 CALL sp_InsertRecipieText(@recipieID,8,1, "Beskrivelse av oppskrift");
-CALL sp_InsertImage(@recipieID,9,1, "C:/windows/malware.exe", "Malware");
+CALL sp_InsertImage(@recipieID,9,1, "./img/saft.png", "Deilig saft bilde");
 
 CALL sp_InsertRecipie("Saft", 1, @recipieID);
 CALL sp_InsertIngredient(@recipieID, 1, 1, "Vann", "3 liter");
@@ -130,5 +130,5 @@ CALL sp_InsertStep(@recipieID,5,1, "Steg 1");
 CALL sp_InsertStep(@recipieID,6,1, "Steg 2");
 CALL sp_InsertStep(@recipieID,7,1, "Steg 3");
 CALL sp_InsertRecipieText(@recipieID,8,1, "Beskrivelse av oppskrift");
-CALL sp_InsertImage(@recipieID,9,1, "C:/windows/malware.exe", "Malware");
+CALL sp_InsertImage(@recipieID,9,1, "./img/saft.png", "Deilig saft bilde");
 
