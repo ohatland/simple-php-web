@@ -1,3 +1,5 @@
+USE recipies;
+
 CREATE VIEW ingredientSequence AS
 SELECT i.recipieID, ingredientName, rs.recipieSequenceNumber FROM recipieSequence rs 
 INNER JOIN ingredient i ON i.recipieSequenceID = rs.ID;
@@ -34,5 +36,4 @@ LEFT JOIN image im ON (im.recipieSequenceID = rs.ID AND im.recipieID = rs.recipi
 LEFT JOIN recipieText rt ON (rt.recipieSequenceID = rs.ID AND rt.recipieID = rs.recipieID)
 LEFT JOIN step s ON (s.recipieSequenceID = rs.ID AND s.recipieID = rs.recipieID)
 LEFT JOIN recipie r ON ( r.ID = rs.recipieID)
-WHERE r.ID = 1
 order by recipieSequenceNumber;
