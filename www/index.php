@@ -1,6 +1,6 @@
 <?php 
-    include './classes/recipiesDB.php';
-    $recipiesDB = new recipiesDB();
+    include './classes/recipie.php';
+    $recipie = new Recipie();
     
     require_once '../vendor/autoload.php';
     $loader = new \Twig\Loader\FilesystemLoader(['./layoutTemplates', './recipieTemplates']);
@@ -11,7 +11,7 @@
     echo $twig->render('header.twig');
     
     // content goes here
-    $dbResult = $recipiesDB->getAllRecipies();
+    $dbResult = $recipie->getAllRecipies();
     echo $twig->render('showAll.twig', ['recipies' => $dbResult]);
     
     echo $twig->render('footer.twig');
