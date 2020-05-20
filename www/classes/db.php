@@ -1,5 +1,18 @@
 <?php
 
+/*
+    Example of simple usage in index.php
+    
+    <?php
+        include './classes/db.php';
+
+        $testObj = new DB();
+        $testObj->setUsers("Erlend");
+        $testObj->getUsers();
+    ?>
+
+*/
+
 class DB 
 {
     private $host = "db";  // When using docker-compose this needs to be the service name of the db in the docker-compose yml
