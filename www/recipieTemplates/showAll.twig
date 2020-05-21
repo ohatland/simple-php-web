@@ -1,7 +1,7 @@
-{% for recipie in recipies %}
-    <div>
+<div class="col-2">
+    {% for recipie in recipies %}  
         <!-- image -->
         <!-- recipieText -->
-        <a href="/gettest.php?recipie={{recipie.ID}}">{{recipie.recipieName}}</a>
-    </div>
-{% endfor %}
+        <a href="/gettest.php?recipie={{recipie.ID}}">{{recipie.recipieName}}</a> <br>
+    {% endfor %}
+</div>

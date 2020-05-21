@@ -1,21 +1,23 @@
-
-{% for recipie in recipies %}
-    {% if recipie.ingredientName %}
-        
-            <li> {{recipie.ingredientName}} {{recipie.ammount}} </li>
-        
-    {% endif %}
-    {% if recipie.stepText %}
-        <br>
-        <div class="step"> {{recipie.stepText}} </div>
-    {% endif %}
-    {% if recipie.recipieText %}
-        <br>
-        <div class="recipieText"> {{recipie.recipieText}}</div>
-    {% endif %}
-    {% if recipie.imagePath %}
-        <br>
-        <img src={{ recipie.imagePath }} alt={{ recipie.imageTitle }}>
-        
-    {% endif %}
-{% endfor %}
+<div class="col-10">
+    <h2>{{recipies[0].recipieName}}</h2>
+    {% for recipie in recipies %}
+        {% if recipie.ingredientName %}
+            
+                <li> {{recipie.ingredientName}} {{recipie.ammount}} </li>
+            
+        {% endif %}
+        {% if recipie.stepText %}
+            <br>
+            <div class="step"> {{recipie.stepText}} </div>
+        {% endif %}
+        {% if recipie.recipieText %}
+            <br>
+            <div class="recipieText"> {{recipie.recipieText}}</div>
+        {% endif %}
+        {% if recipie.imagePath %}
+            <br>
+            <img src={{ recipie.imagePath }} alt={{ recipie.imageTitle }}>
+            
+        {% endif %}
+    {% endfor %}
+</div>
