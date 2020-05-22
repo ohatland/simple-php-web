@@ -1,28 +1,16 @@
 <?php 
-    include './classes/recipie.php';
-    $recipie = new Recipie();
-    
-    require_once '../vendor/autoload.php';
-    $loader = new \Twig\Loader\FilesystemLoader(['./layoutTemplates', './recipieTemplates']);
+   include './classes/httpResponse.php';
+   include './classes/recipie.php';
+   $recipie = new Recipie();
+   
+   require_once '../vendor/autoload.php';
+   $loader = new \Twig\Loader\FilesystemLoader(['./layoutTemplates', './recipieTemplates']);
 
-    if( $_GET["recipie"]) {
-        $twig = new \Twig\Environment($loader);
+   if( $_GET["recipie"]) {
+      getRecipie($loader, $recipie);
+   }
 
-    
-        echo $twig->render('head.twig', ['title' => 'Main Page']);
-        echo $twig->render('header.twig');
-
-        $dbResult = $recipie->getAllRecipies();
-        echo $twig->render('showAll.twig', ['recipies' => $dbResult]);
-        
-        // content goes here
-        $dbResult = $recipie->getRecipie($_GET['recipie']);
-        
-        echo $twig->render('showRecipie.twig', ['recipies' => $dbResult]);
-        
-        echo $twig->render('footer.twig');
-        exit();
-     }
+   
 
 ?>
 <html>
