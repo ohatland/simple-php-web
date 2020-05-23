@@ -14,45 +14,45 @@ class Recipie extends DB
 
     public function getRecipie($recipieID)
     {
-        $sql = "CALL sp_SelectRecipie($recipieID)";
+        $sql = "CALL sp_SelectRecipie(?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$recipieID]);
         return $stmt->fetchAll();
     }
 
     public function newRecipie($recipieName, $userID)
     {
-        $sql = "CALL spInsertRecipie($recipieName, $userID)";
+        $sql = "CALL spInsertRecipie(?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$recipieName, $userID]);
         return $stmt->fetchAll();
     }
 
     public function addRecipieText($recipieID, $sequenceNumber, $userID, $recipieText)
     {
-        $sql = "CALL spInsertRecipie($recipieID, $sequenceNumber, $userID, $recipieText)";
+        $sql = "CALL spInsertRecipieText(?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$recipieID, $sequenceNumber, $userID, $recipieText]);
     }
 
     public function addIngredient($recipieID, $sequenceNumber, $userID, $ingredientName, $ammount)
     {
-        $sql = "CALL spInsertRecipie($recipieID, $sequenceNumber, $userID, $ingredientName, $ammount)";
+        $sql = "CALL spInsertIngredient(?, ?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$recipieID, $sequenceNumber, $userID, $ingredientName, $ammount]);
     }
 
     public function addStep($recipieID, $sequenceNumber, $userID, $stepText)
     {
-        $sql = "CALL spInsertRecipie($recipieID, $sequenceNumber, $userID, $stepText)";
+        $sql = "CALL spInsertStep(?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$recipieID, $sequenceNumber, $userID, $stepText]);
     }
 
     public function addImage($recipieID, $sequenceNumber, $userID, $imagePath, $imageTitle)
     {
-        $sql = "CALL spInsertRecipie($recipieID, $sequenceNumber, $userID, $imagePath, $imageTitle)";
+        $sql = "CALL spInsertImage(?, ?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$recipieID, $sequenceNumber, $userID, $imagePath, $imageTitle]);
     }
 }
