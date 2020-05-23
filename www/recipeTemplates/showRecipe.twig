@@ -1,22 +1,22 @@
 <div class="col-10">
-    <h2>{{recipies[0].recipieName}}</h2>
-    {% for recipie in recipies %}
-        {% if recipie.ingredientName %}
+    <h2>{{recipes[0].recipeName}}</h2>
+    {% for recipe in recipes %}
+        {% if recipe.ingredientName %}
             
-                <li> {{recipie.ingredientName}} {{recipie.ammount}} </li>
+                <li> {{recipe.ingredientName}} {{recipe.ammount}} </li>
             
         {% endif %}
-        {% if recipie.stepText %}
+        {% if recipe.stepText %}
             <br>
-            <div class="step"> {{recipie.stepText}} </div>
+            <div class="step"> {{recipe.stepText}} </div>
         {% endif %}
-        {% if recipie.recipieText %}
+        {% if recipe.recipeText %}
             <br>
-            <div class="recipieText"> {{recipie.recipieText}}</div>
+            <div class="recipeText"> {{recipe.recipeText}}</div>
         {% endif %}
-        {% if recipie.imagePath %}
+        {% if recipe.imagePath %}
             <br>
-            <img src={{ recipie.imagePath }} alt={{ recipie.imageTitle }}>
+            <img src={{ recipe.imagePath }} alt={{ recipe.imageTitle }}>
             
         {% endif %}
     {% endfor %}

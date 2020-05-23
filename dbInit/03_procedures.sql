@@ -129,6 +129,6 @@ CALL sp_InsertRecipeIngredient(@recipeID, 4, 1, "Lime Jucie", "2 SS");
 CALL sp_InsertRecipeStep(@recipeID,5,1, "Steg 1");
 CALL sp_InsertRecipeStep(@recipeID,6,1, "Steg 2");
 CALL sp_InsertRecipeStep(@recipeID,7,1, "Steg 3");
-CALL sp_InsertRecipeRecipeText(@recipeID,8,1, "Beskrivelse av oppskrift");
+CALL sp_InsertRecipeText(@recipeID,8,1, "Beskrivelse av oppskrift");
 CALL sp_InsertRecipeImage(@recipeID,9,1, "./img/saft.png", "Deilig saft bilde");
 
