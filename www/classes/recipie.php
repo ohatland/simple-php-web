@@ -2,57 +2,57 @@
 
 include 'db.php';
 
-class Recipie extends DB
+class recipe extends DB
 {
-    public function getAllRecipies()
+    public function getAllrecipes()
     {
-        $sql = "CALL sp_SelectAllRecipies()";
+        $sql = "CALL sp_SelectAllRecipes()";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
-    public function getRecipie($recipieID)
+    public function getrecipe($recipeID)
     {
-        $sql = "CALL sp_SelectRecipie(?)";
+        $sql = "CALL sp_SelectRecipe(?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$recipieID]);
+        $stmt->execute([$recipeID]);
         return $stmt->fetchAll();
     }
 
-    public function newRecipie($recipieName, $userID)
+    public function newrecipe($recipeName, $userID)
     {
-        $sql = "CALL spInsertRecipie(?, ?)";
+        $sql = "CALL spInsertRecipe(?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$recipieName, $userID]);
+        $stmt->execute([$recipeName, $userID]);
         return $stmt->fetchAll();
     }
 
-    public function addRecipieText($recipieID, $sequenceNumber, $userID, $recipieText)
+    public function addrecipeText($recipeID, $sequenceNumber, $userID, $recipeText)
     {
-        $sql = "CALL spInsertRecipieText(?, ?, ?, ?)";
+        $sql = "CALL spInsertRecipeText(?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$recipieID, $sequenceNumber, $userID, $recipieText]);
+        $stmt->execute([$recipeID, $sequenceNumber, $userID, $recipeText]);
     }
 
-    public function addIngredient($recipieID, $sequenceNumber, $userID, $ingredientName, $ammount)
+    public function addIngredient($recipeID, $sequenceNumber, $userID, $ingredientName, $ammount)
     {
-        $sql = "CALL spInsertIngredient(?, ?, ?, ?, ?)";
+        $sql = "CALL spInsertRecipeIngredient(?, ?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$recipieID, $sequenceNumber, $userID, $ingredientName, $ammount]);
+        $stmt->execute([$recipeID, $sequenceNumber, $userID, $ingredientName, $ammount]);
     }
 
-    public function addStep($recipieID, $sequenceNumber, $userID, $stepText)
+    public function addStep($recipeID, $sequenceNumber, $userID, $stepText)
     {
-        $sql = "CALL spInsertStep(?, ?, ?, ?)";
+        $sql = "CALL spInsertRecipeStep(?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$recipieID, $sequenceNumber, $userID, $stepText]);
+        $stmt->execute([$recipeID, $sequenceNumber, $userID, $stepText]);
     }
 
-    public function addImage($recipieID, $sequenceNumber, $userID, $imagePath, $imageTitle)
+    public function addImage($recipeID, $sequenceNumber, $userID, $imagePath, $imageTitle)
     {
-        $sql = "CALL spInsertImage(?, ?, ?, ?, ?)";
+        $sql = "CALL spInsertRecipeImage(?, ?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$recipieID, $sequenceNumber, $userID, $imagePath, $imageTitle]);
+        $stmt->execute([$recipeID, $sequenceNumber, $userID, $imagePath, $imageTitle]);
     }
 }

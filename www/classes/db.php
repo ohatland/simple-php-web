@@ -5,7 +5,7 @@ class DB
     private $host = "db";  // When using docker-compose this needs to be the service name of the db in the docker-compose yml
     private $user = "root";
     private $pwd = "test";
-    private $dbName = "recipies";
+    private $dbName = "recipes";
 
     protected function connect() 
     {

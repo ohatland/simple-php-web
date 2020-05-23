@@ -1,10 +1,10 @@
-CREATE DATABASE recipies;
-USE recipies;
+CREATE DATABASE recipes;
+USE recipes;
 
-CREATE TABLE `recipie` 
+CREATE TABLE `recipe` 
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `recipieName` VARCHAR(150) NOT NULL,
+    `recipeName` VARCHAR(150) NOT NULL,
     `owner` INT NOT NULL,
     `createdBy` INT NOT NULL,
     `created` DATETIME NOT NULL,
@@ -13,27 +13,27 @@ CREATE TABLE `recipie`
     PRIMARY KEY (ID)
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `recipieSequence` 
+CREATE TABLE `recipeSequence` 
 (
 	`ID` INT NOT NULL auto_increment,
-    `recipieID` INT NOT NULL,
-    `recipieSequenceNumber` INT NOT NULL,
+    `recipeID` INT NOT NULL,
+    `recipeSequenceNumber` INT NOT NULL,
     `owner` INT NOT NULL,
     `createdBy` INT NOT NULL,
     `created` DATETIME NOT NULL,
     `alteredBy` INT NOT NULL,
     `altered` DATETIME NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (recipieID) 
-        REFERENCES recipie(ID)
+    FOREIGN KEY (recipeID) 
+        REFERENCES recipe(ID)
         ON DELETE CASCADE    
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `ingredient`
+CREATE TABLE `recipeIngredient`
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `recipieID` INT NOT NULL,
-    `recipieSequenceID` INT NOT NULL,
+    `recipeID` INT NOT NULL,
+    `recipeSequenceID` INT NOT NULL,
     `ingredientName` VARCHAR(150) NOT NULL,
     `ammount` VARCHAR(200),
     `owner` INT NOT NULL,
@@ -42,19 +42,19 @@ CREATE TABLE `ingredient`
     `alteredBy` INT NOT NULL,
     `altered` DATETIME NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (recipieID) 
-        REFERENCES recipie(ID)
+    FOREIGN KEY (recipeID) 
+        REFERENCES recipe(ID)
         ON DELETE CASCADE,
-    FOREIGN KEY (recipieSequenceID)
-        REFERENCES recipieSequence(ID)
+    FOREIGN KEY (recipeSequenceID)
+        REFERENCES recipeSequence(ID)
         ON DELETE CASCADE
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `step`
+CREATE TABLE `recipeStep`
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `recipieID` INT NOT NULL,
-    `recipieSequenceID` INT NOT NULL,
+    `recipeID` INT NOT NULL,
+    `recipeSequenceID` INT NOT NULL,
     `stepText` VARCHAR(4000) NOT NULL,
     `owner` INT NOT NULL,
     `createdBy` INT NOT NULL,
@@ -62,39 +62,39 @@ CREATE TABLE `step`
     `alteredBy` INT NOT NULL,
     `altered` DATETIME NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (recipieID) 
-        REFERENCES recipie(ID)
+    FOREIGN KEY (recipeID) 
+        REFERENCES recipe(ID)
         ON DELETE CASCADE,
-    FOREIGN KEY (recipieSequenceID)
-        REFERENCES recipieSequence(ID)
+    FOREIGN KEY (recipeSequenceID)
+        REFERENCES recipeSequence(ID)
         ON DELETE CASCADE
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `recipieText`
+CREATE TABLE `recipeText`
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `recipieID` INT NOT NULL,
-    `recipieSequenceID` INT NOT NULL,
-    `recipieText` VARCHAR(10000) NOT NULL,
+    `recipeID` INT NOT NULL,
+    `recipeSequenceID` INT NOT NULL,
+    `recipeText` VARCHAR(10000) NOT NULL,
     `owner` INT NOT NULL,
     `createdBy` INT NOT NULL,
     `created` DATETIME NOT NULL,
     `alteredBy` INT NOT NULL,
     `altered` DATETIME NOT NULL, 
     PRIMARY KEY (ID),
-    FOREIGN KEY (recipieID) 
-        REFERENCES recipie(ID)
+    FOREIGN KEY (recipeID) 
+        REFERENCES recipe(ID)
         ON DELETE CASCADE,
-    FOREIGN KEY (recipieSequenceID)
-        REFERENCES recipieSequence(ID)
+    FOREIGN KEY (recipeSequenceID)
+        REFERENCES recipeSequence(ID)
         ON DELETE CASCADE
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `image`
+CREATE TABLE `recipeImage`
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `recipieID` INT NOT NULL,
-    `recipieSequenceID` INT NOT NULL,
+    `recipeID` INT NOT NULL,
+    `recipeSequenceID` INT NOT NULL,
     `imagePath` VARCHAR(200) NOT NULL,
     `imageTitle` VARCHAR(150) NOT NULL,
     `owner` INT NOT NULL,
@@ -103,10 +103,10 @@ CREATE TABLE `image`
     `alteredBy` INT NOT NULL,
     `altered` DATETIME NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (recipieID) 
-        REFERENCES recipie(ID)
+    FOREIGN KEY (recipeID) 
+        REFERENCES recipe(ID)
         ON DELETE CASCADE,
-    FOREIGN KEY (recipieSequenceID)
-        REFERENCES recipieSequence(ID)
+    FOREIGN KEY (recipeSequenceID)
+        REFERENCES recipeSequence(ID)
         ON DELETE CASCADE
 )   ENGINE=InnoDB DEFAULT CHARSET=utf8;
