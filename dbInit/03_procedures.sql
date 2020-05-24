@@ -5,8 +5,8 @@ DELIMITER $$
 CREATE PROCEDURE sp_InsertRecipe (IN recipeName VARCHAR(150), userID INT, OUT recipeID INT)
 BEGIN
 SET @currentDatetime = CURRENT_TIMESTAMP();
-INSERT INTO recipe (recipeName, owner, createdBy, created, alteredBy, altered)
-VALUES (recipeName, userID, userID, @currentDatetime, userID, @currentDatetime);
+INSERT INTO recipe (recipeName, createdBy, created, alteredBy, altered)
+VALUES (recipeName, userID, @currentDatetime, userID, @currentDatetime);
 SET recipeID = LAST_INSERT_ID();
 END
 $$
@@ -20,8 +20,8 @@ BEGIN
 
 SET @currentDatetime = CURRENT_TIMESTAMP();
 
-INSERT INTO recipeSequence (recipeID, recipeSequenceNumber, owner, createdBy, created, alteredBy, altered)
-VALUES (recipeID, recipeSequenceNumber, userID, userID, @currentDatetime, userID, @currentDatetime);
+INSERT INTO recipeSequence (recipeID, recipeSequenceNumber, createdBy, created, alteredBy, altered)
+VALUES (recipeID, recipeSequenceNumber, userID, @currentDatetime, userID, @currentDatetime);
 SET recipeSequenceID = LAST_INSERT_ID();
 END
 $$
@@ -33,8 +33,8 @@ CREATE PROCEDURE sp_InsertRecipeImage (IN recipeID INT, sequenceNumber INT, user
 BEGIN
 CALL sp_InsertRecipeSeqence(recipeID, sequenceNumber, userID, @recipeSequenceID);
 SET @currentDatetime = CURRENT_TIMESTAMP();
-INSERT INTO recipeImage (recipeID, recipeSequenceID, imagePath, imageTitle, owner, createdBy, created, alteredBy, altered)
-VALUES (recipeID, @recipeSequenceID, imagePath, imageTitle, userID, userID, @currentDatetime, userID, @currentDatetime);
+INSERT INTO recipeImage (recipeID, recipeSequenceID, imagePath, imageTitle, createdBy, created, alteredBy, altered)
+VALUES (recipeID, @recipeSequenceID, imagePath, imageTitle, userID, @currentDatetime, userID, @currentDatetime);
 END
 $$
 DELIMITER ;
@@ -45,8 +45,8 @@ CREATE PROCEDURE sp_InsertRecipeIngredient (IN recipeID INT, sequenceNumber INT,
 BEGIN
 CALL sp_InsertRecipeSeqence(recipeID, sequenceNumber, userID, @recipeSequenceID);
 SET @currentDatetime = CURRENT_TIMESTAMP();
-INSERT INTO recipeIngredient (recipeID, recipeSequenceID, ingredientName, ammount, owner, createdBy, created, alteredBy, altered)
-VALUES (recipeID, @recipeSequenceID, ingredientName, ammount, userID, userID, @currentDatetime, userID, @currentDatetime);
+INSERT INTO recipeIngredient (recipeID, recipeSequenceID, ingredientName, ammount, createdBy, created, alteredBy, altered)
+VALUES (recipeID, @recipeSequenceID, ingredientName, ammount, userID, @currentDatetime, userID, @currentDatetime);
 END
 $$
 DELIMITER ;
@@ -57,8 +57,8 @@ CREATE PROCEDURE sp_InsertRecipeText (IN recipeID INT, sequenceNumber INT, userI
 BEGIN
 CALL sp_InsertRecipeSeqence(recipeID, sequenceNumber, userID, @recipeSequenceID);
 SET @currentDatetime = CURRENT_TIMESTAMP();
-INSERT INTO recipeText (recipeID, recipeSequenceID, recipeText, owner, createdBy, created, alteredBy, altered)
-VALUES (recipeID, @recipeSequenceID, recipeText, userID, userID, @currentDatetime, userID, @currentDatetime);
+INSERT INTO recipeText (recipeID, recipeSequenceID, recipeText, createdBy, created, alteredBy, altered)
+VALUES (recipeID, @recipeSequenceID, recipeText, userID, @currentDatetime, userID, @currentDatetime);
 END
 $$
 DELIMITER ;
@@ -69,8 +69,8 @@ CREATE PROCEDURE sp_InsertRecipeStep (IN recipeID INT, sequenceNumber INT, userI
 BEGIN
 CALL sp_InsertRecipeSeqence(recipeID, sequenceNumber, userID, @recipeSequenceID);
 SET @currentDatetime = CURRENT_TIMESTAMP();
-INSERT INTO recipeStep (recipeID, recipeSequenceID, stepText, owner, createdBy, created, alteredBy, altered)
-VALUES (recipeID, @recipeSequenceID, stepText, userID, userID, @currentDatetime, userID, @currentDatetime);
+INSERT INTO recipeStep (recipeID, recipeSequenceID, stepText, createdBy, created, alteredBy, altered)
+VALUES (recipeID, @recipeSequenceID, stepText, userID, @currentDatetime, userID, @currentDatetime);
 END
 $$
 DELIMITER ;
@@ -91,7 +91,7 @@ DELIMITER $$
 CREATE PROCEDURE sp_SelectAllRecipes ()
 BEGIN
 
-SELECT recipeName, owner, ID FROM recipe
+SELECT recipeName, createdBy, ID FROM recipe
 ORDER BY recipeName;
 
 END
