@@ -1,8 +1,4 @@
 <?php 
-    
-    include './classes/recipe.php';
-    $recipe = new recipe();
-    
     require_once '../vendor/autoload.php';
     $loader = new \Twig\Loader\FilesystemLoader(['./layoutTemplates', './recipeTemplates']);
     
