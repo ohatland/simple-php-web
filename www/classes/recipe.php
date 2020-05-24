@@ -2,7 +2,7 @@
 
 include 'user.php';
 
-class recipe extends user
+class recipe
 {
     public function getAllrecipes()
     {
