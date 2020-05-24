@@ -2,9 +2,10 @@
 
 include 'user.php';
 
+// Class that can manipulate recipe data.
 class recipe
 {
-    public function getAllrecipes()
+    public function getAllRecipes()
     {
         $sql = "CALL sp_SelectAllRecipes()";
         $stmt = $this->connect()->prepare($sql);
@@ -12,7 +13,7 @@ class recipe
         return $stmt->fetchAll();
     }
 
-    public function getrecipe($recipeID)
+    public function getRecipe($recipeID)
     {
         $sql = "CALL sp_SelectRecipe(?)";
         $stmt = $this->connect()->prepare($sql);
@@ -20,7 +21,7 @@ class recipe
         return $stmt->fetchAll();
     }
 
-    public function newrecipe($recipeName, $userID)
+    public function newRecipe($recipeName, $userID)
     {
         $sql = "CALL spInsertRecipe(?, ?)";
         $stmt = $this->connect()->prepare($sql);
@@ -28,7 +29,7 @@ class recipe
         return $stmt->fetchAll();
     }
 
-    public function addrecipeText($recipeID, $sequenceNumber, $userID, $recipeText)
+    public function addRecipeText($recipeID, $sequenceNumber, $userID, $recipeText)
     {
         $sql = "CALL spInsertRecipeText(?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
