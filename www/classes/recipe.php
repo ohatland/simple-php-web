@@ -1,8 +1,8 @@
 <?php
 
-include 'db.php';
+include 'user.php';
 
-class recipe extends DB
+class recipe extends user
 {
     public function getAllrecipes()
     {
