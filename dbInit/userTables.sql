@@ -1,9 +1,10 @@
 CREATE TABLE `user` 
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `firstName` VARCHAR(150) NOT NULL,
-    `lastName` VARCHAR(150) NOT NULL,
-    `mail` VARCHAR(150) NOT NULL,
+    `firstName` VARCHAR(200) NOT NULL,
+    `lastName` VARCHAR(200) NOT NULL,
+    `mail` VARCHAR(255) NOT NULL,
+    `password` LONGTEXT NOT NULL,
     `createdBy` INT NOT NULL,
     `created` DATETIME NOT NULL,
     `alteredBy` INT NOT NULL,
