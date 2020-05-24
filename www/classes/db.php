@@ -11,7 +11,11 @@ class DB
     {
         $pdo = new PDO("mysql:host=$this->host;dbname=$this->dbName", $this->user, $this->pwd);
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        return $pdo;
+        if (!$pdo)
+        {
+            die("Connection failed: "); //TODO gt pdo connection error
+        } else
+            return $pdo;
     }
 }
 ?>
