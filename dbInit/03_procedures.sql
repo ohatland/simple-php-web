@@ -109,10 +109,10 @@ $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE sp_GetUser (IN @mail VARCHAR(255), @password LONGTEXT)
+CREATE PROCEDURE sp_GetUser (IN mail VARCHAR(255), password LONGTEXT)
 BEGIN
 SELECT * FROM user 
-WHERE mail = @mail AND userPassword = @password;
+WHERE mail = mail AND userPassword = password;
 END
 $$
 DELIMITER ;
