@@ -99,27 +99,26 @@ $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE sp_InsertUser (IN firstName VARCHAR(200), lastName VARCHAR(200), mail VARCHAR(255), password LONGTEXT, OUT userID INT)
+CREATE PROCEDURE sp_InsertUser (IN firstName VARCHAR(200), lastName VARCHAR(200), mail VARCHAR(255), password LONGTEXT)
 BEGIN
 SET @currentDatetime = CURRENT_TIMESTAMP();
-INSERT INTO user (firstName, lastName, mail, password, created, altered)
-VALUES (firstName, lastName, mail, password, @currentDatetime, @currentDatetime);
-SET userID = LAST_INSERT_ID();
+INSERT INTO user (firstName, lastName, mail, userPassword, createdBy, created, alteredBy, altered)
+VALUES (firstName, lastName, mail, password, '1', @currentDatetime, '1', @currentDatetime);
 END
 $$
 DELIMITER ;
 
 DELIMITER $$
-
-CREATE PROCEDURE sp_LoginUser (IN userMail VARCHAR(255), userPassword LONGTEXT)
+CREATE PROCEDURE sp_GetUser (IN @mail VARCHAR(255), @password LONGTEXT)
 BEGIN
-
-SELECT ID FROM user
-WHERE mail = userMail AND password = userPassword;
-
+SELECT * FROM user 
+WHERE mail = @mail AND userPassword = @password;
 END
 $$
 DELIMITER ;
+
+CALL sp_InsertUser ('Erlend', 'Sørhus', 'minMail', 'mittPassord');
+CALL sp_InsertUser ('Øyvind', 'Hatland', 'dinMail', 'dittPassord')
 
 
 CALL sp_InsertRecipe("Brownies", 1, @recipeID);
