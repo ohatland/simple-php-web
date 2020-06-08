@@ -5,27 +5,33 @@ class User extends DB
 {
     function loginUser()
     {
-        $userMail = $_POST['userName'];
-        $password = hashPassword($_POST['userPassword']);
-        // TODO make stored procedure
-        $sql = "CALL sp_LoginUser(?, ?)";
+        $sql = "CALL sp_GetUser(?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$userMail, $password]);
+        $stmt->execute([$_POST['userName']]);
         $result = $stmt->fetchAll();
-        $_SESSION['userID'] = $result['ID'];
+
+        if (password_verify($_POST['userPassword'], $result[0]['userPassword']))
+        {
+            $_SESSION['userID'] = $result[0]['ID'];
+            $_SESSION['firstName'] = $result[0]['firstName'];
+            $_SESSION['lastName'] = $result[0]['lastName'];
+            $_SESSION['mail'] = $result[0]['mail'];
+        }        
     }
 
     function newUser()
     {
         // TODO Check to see if user exists
         $sql = "CALL sp_InsertUser(?, ?, ?, ?)";
-        $stmt = $this->connect()-prepare($sql);
-        $stmt->execute([$_POST['firstName'], $_POST['lastName'], $_POST['userMail'], hashPassword($_POST['password'])]);        
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$_POST['firstName'], $_POST['lastName'], $_POST['userMail'], password_hash($_POST['password'], PASSWORD_DEFAULT)]);        
     }
     
-    private function hashPassword($passwordInn)
+    
+
+    function getUserId()
     {
-        return password_hash($passwordInn, PASSWORD_DEFAULT);
+        return $userID;
     }
 }
 
