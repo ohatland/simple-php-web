@@ -19,7 +19,7 @@ INNER JOIN recipeStep s ON s.recipeSequenceID = rs.ID;
 CREATE VIEW recipeInSequence AS
 SELECT 
 r.recipeName,
-r.owner,
+r.createdBy,
 r.ID AS recipeID,
 rs.ID AS recipeSequenceID,
 rs.recipeSequenceNumber,
