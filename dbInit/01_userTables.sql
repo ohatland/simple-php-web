@@ -1,3 +1,6 @@
+CREATE DATABASE recipes;
+USE recipes;
+
 CREATE TABLE `user` 
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
