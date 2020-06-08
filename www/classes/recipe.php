@@ -3,7 +3,7 @@
 include 'user.php';
 
 // Class that can manipulate recipe data.
-class recipe
+class Recipe extends User
 {
     public function getAllRecipes()
     {
