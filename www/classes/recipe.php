@@ -1,10 +1,18 @@
 <?php
 
-include 'user.php';
+require_once 'db.php';
 
 // Class that can manipulate recipe data.
-class Recipe extends User
+class Recipe extends DB
 {
+    public function getUserRecipes()
+    {
+        $sql = "CALL sp_SelectUserRecipes(?)";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$_SESSION['userID']]);
+        return $stmt->fetchAll();
+    }
+
     public function getAllRecipes()
     {
         $sql = "CALL sp_SelectAllRecipes()";
