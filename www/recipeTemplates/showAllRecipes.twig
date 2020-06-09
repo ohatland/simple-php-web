@@ -2,6 +2,6 @@
     {% for recipe in recipes %}  
         <!-- image -->
         <!-- recipeText -->
-        {{recipe.ID}} {{recipe.recipeName}} <br>
+        <a href="/myRecipes.php?recipe={{recipe.ID}}">{{recipe.recipeName}}</a> <br>
     {% endfor %}
 </div>
