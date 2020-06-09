@@ -3,5 +3,7 @@
         <!-- image -->
         <!-- recipeText -->
         <a href="/myRecipes.php?recipe={{recipe.ID}}">{{recipe.recipeName}}</a> <br>
+        <a href="/newRecipe.php?recipe={{recipe.ID}}"> Alter </a> |
+        <a href="/myRecipes.php?recipe={{recipe.ID}}&delete=1"> Delete </a><br><br>
     {% endfor %}
 </div>
