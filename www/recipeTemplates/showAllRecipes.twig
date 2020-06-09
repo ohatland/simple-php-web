@@ -1,15 +1,7 @@
-<div class="col-2"> 
-    {% for index in recipes %}
-        Tøys
-        
+<div class="col-2">
+    {% for recipe in recipes %}  
+        <!-- image -->
+        <!-- recipeText -->
+        {{recipe.ID}} {{recipe.recipeName}} <br>
     {% endfor %}
 </div>
-
-{% for i in 0..2 %}
-    {% for recipe in recipes %}  
-            Tull
-            <!-- image -->
-            <!-- recipeText -->
-            {{recipe[i].ID}} {{recipe[i].recipeName}}
-        {% endfor %}
-{% endfor %}
