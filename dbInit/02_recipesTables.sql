@@ -1,3 +1,5 @@
+USE recipes;
+
 CREATE TABLE `recipe` 
 (
     `ID` INT NOT NULL AUTO_INCREMENT,
