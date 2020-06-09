@@ -118,7 +118,7 @@ $$
 DELIMITER ;
 
 CALL sp_InsertUser ('Erlend', 'Sørhus', 'minMail', 'mittPassord');
-CALL sp_InsertUser ('Øyvind', 'Hatland', 'dinMail', 'dittPassord')
+CALL sp_InsertUser ('Øyvind', 'Hatland', 'dinMail', 'dittPassord');
 
 
 CALL sp_InsertRecipe("Brownies", 1, @recipeID);
