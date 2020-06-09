@@ -6,8 +6,7 @@
     
     $dbResult = $recipie->getUserRecipes();
 
-    print_r($dbResult);
-    echo $twig->render('showAllRecipes.twig', ['recipies' => $dbResult]);
+    echo $twig->render('showAllRecipes.twig', ['recipes' => $dbResult]);
     include 'footer.php';
 
 ?>
