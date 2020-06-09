@@ -19,6 +19,14 @@ class User extends DB
         }        
     }
 
+    function signOut()
+    {
+        $_SESSION['userID'] = NULL;
+        $_SESSION['firstName'] = NULL;
+        $_SESSION['lastName'] = NULL;
+        $_SESSION['mail'] = NULL;
+    }
+
     function newUser()
     {
         // TODO Check to see if user exists
@@ -27,8 +35,6 @@ class User extends DB
         $stmt->execute([$_POST['firstName'], $_POST['lastName'], $_POST['userMail'], password_hash($_POST['password'], PASSWORD_DEFAULT)]);        
     }
     
-    
-
     function getUserId()
     {
         return $userID;
