@@ -99,6 +99,20 @@ $$
 DELIMITER ;
 
 DELIMITER $$
+
+CREATE PROCEDURE sp_SelectUserRecipes (IN userID INT)
+BEGIN
+
+SELECT recipeName, createdBy, ID FROM recipe
+WHERE userID = userID
+ORDER BY recipeName;
+
+END
+$$
+DELIMITER ;
+
+
+DELIMITER $$
 CREATE PROCEDURE sp_InsertUser (IN firstName VARCHAR(200), lastName VARCHAR(200), mail VARCHAR(255), password LONGTEXT)
 BEGIN
 SET @currentDatetime = CURRENT_TIMESTAMP();
