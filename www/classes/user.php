@@ -5,11 +5,12 @@ class User extends DB
 {
     function loginUser()
     {
-        $sql = "CALL sp_GetUser(?)";
+        $sql = "CALL sp_getUser(?)";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$_POST['userName']]);
         $result = $stmt->fetchAll();
-
+        print_r($result[0]['userPassword']);
+        
         if (password_verify($_POST['userPassword'], $result[0]['userPassword']))
         {
             $_SESSION['userID'] = $result[0]['ID'];
